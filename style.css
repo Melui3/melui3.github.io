@@ -1,0 +1,103 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1e1e1e; /* neutre pour contraster la card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    color: white;
+}
+
+.container {
+    text-align: left;
+}
+
+.radio-card {
+    position: relative;
+    background-color: #000; /* fond noir */
+    padding: 20px 25px;
+    border-radius: 12px;
+    width: 380px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    font-family: 'Consolas', monospace; /* style console / pit wall */
+    font-size: 14px;
+    line-height: 1.5;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.2); /* fine border */
+}
+
+/* Barre en haut */
+.radio-card::before {
+    content: "";
+    position: absolute;
+    top:0; left:0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #ff0000, #00d2be, #1e41ff); /* couleurs F1 stylisées */
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+/* Grésillement léger */
+.radio-card::after {
+    content: "";
+    position: absolute;
+    top:0; left:0;
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+            180deg,
+            rgba(255,255,255,0.02),
+            rgba(255,255,255,0.02) 1px,
+            transparent 1px,
+            transparent 2px
+    );
+    pointer-events: none;
+    animation: staticAnim 0.1s infinite;
+}
+
+@keyframes staticAnim {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(1px);}
+    100% {transform: translateY(0);}
+}
+
+/* Fade-in ligne par ligne */
+.line {
+    opacity: 0;
+    transform: translateX(-5px);
+    animation: fadeInMove 0.3s forwards;
+}
+
+@keyframes fadeInMove {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.driver-title {
+    font-family: 'Consolas', monospace;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: right; /* texte à droite */
+    border-bottom: 2px solid; /* trait en dessous */
+    padding-bottom: 4px; /* espace entre texte et trait */
+}
+
+button {
+    display: block;          /* transforme le bouton en block pour que margin auto fonctionne */
+    margin: 20px auto 0 auto; /* top 20px, centré horizontalement */
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background: #910000;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #650202;
+}
+
